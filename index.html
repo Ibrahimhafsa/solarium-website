@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Solarium — Clean Solar Energy for Homes & Businesses</title>
+<meta name="description" content="Solarium provides expert solar installation, battery storage, and maintenance with guaranteed savings for homes and businesses." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#39FF14;
+    --green-2:#7CFF5E;
+    --dark:#0D0D0D;
+    --dark-2:#181818;
+    --dark-3:#222;
+    --white:#ffffff;
+    --text:#111111;
+    --muted:#6b6b6b;
+    --border:#e6e6e6;
+    --border-dark:#2a2a2a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1280px;margin:0 auto;padding:0 24px}
+  .em{font-style:italic;font-weight:700}
+  .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#f1f1f1;font-size:13px;font-weight:500;color:#222}
+  .tag.dark{background:#1a1a1a;color:#fff}
+  .tag::before{content:"✦";color:var(--green);font-size:12px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid transparent;transition:transform .2s ease, background .2s ease, color .2s ease;cursor:pointer}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-green{background:var(--green);color:#0a0a0a}
+  .btn-green:hover{background:var(--green-2)}
+  .btn-dark{background:#0D0D0D;color:#fff}
+  .btn-dark:hover{background:#222}
+  .btn-outline{background:transparent;color:#111;border-color:#111}
+  .arrow{display:inline-block;transition:transform .2s ease}
+  .btn:hover .arrow{transform:translate(3px,-3px)}
+  section{padding:90px 0}
+  h1,h2,h3,h4{font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+  h2.section-title{font-size:clamp(34px,4.5vw,56px);margin-top:18px}
+
+  /* NAVBAR */
+  .nav-wrap{position:sticky;top:0;z-index:50;background:var(--dark);color:#fff;border-bottom:1px solid var(--border-dark)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1400px;margin:0 auto;gap:24px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;color:#fff}
+  .logo-icon{width:28px;height:28px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px}
+  .logo-icon span{background:var(--green);border-radius:2px}
+  .nav-links{display:flex;gap:32px;align-items:center;list-style:none;border-left:1px solid #333;padding-left:32px}
+  .nav-links a{font-size:15px;color:#ddd;position:relative;padding:6px 0;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-links a.active{color:#fff}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:#fff}
+  .hamburger{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+
+  /* HERO */
+  .hero{background:#0D0D0D;color:#fff;padding:0;position:relative;overflow:hidden}
+  .hero-inner{position:relative;min-height:680px;background:linear-gradient(180deg,rgba(13,13,13,.55),rgba(13,13,13,.85)),url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&h=1200&q=80') center/cover;}
+  .hero-content{max-width:1280px;margin:0 auto;padding:120px 24px 100px;display:grid;grid-template-columns:1.4fr .9fr;gap:40px;align-items:end}
+  .hero h1{font-size:clamp(44px,6vw,84px);font-weight:500;max-width:14ch}
+  .hero-actions{margin-top:40px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+  .phone{display:flex;align-items:center;gap:12px;color:#eee;font-size:15px}
+  .phone .ic{width:42px;height:42px;border-radius:999px;border:1px solid #333;display:grid;place-items:center;background:#111}
+  .hero-card{background:#141414;border:1px solid #2a2a2a;border-radius:18px;padding:18px;display:flex;gap:14px;align-items:center;max-width:420px}
+  .hero-card img{width:120px;height:120px;border-radius:14px;object-fit:cover}
+  .hero-card p{font-size:15px;color:#ddd;line-height:1.5}
+  .hero-card p b{color:var(--green)}
+
+  /* ABOUT */
+  .about{background:#fff}
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+  .about-grid .lead{font-size:14px;color:#444;margin-top:10px}
+  .about-img{border-radius:16px;overflow:hidden}
+  .about-img img{width:100%;height:560px;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .about-img:hover img{transform:scale(1.05)}
+  .divider{height:1px;background:var(--border);margin:28px 0}
+  .about-cols{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .about-cols h4{font-size:18px;margin-bottom:8px}
+  .about-cols p{color:#555;font-size:14px}
+  .about-bottom{margin-top:50px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .about-card-green{background:var(--green);border-radius:18px;padding:32px;color:#0a0a0a;font-size:17px;line-height:1.6}
+  .about-bottom-actions{margin-top:18px}
+  .about-side-img img{width:100%;height:340px;object-fit:cover;border-radius:18px}
+
+  /* SERVICES */
+  .services-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:50px}
+  .acc{border-top:1px solid var(--border)}
+  .acc-num{color:#888;font-size:16px}
+  .acc-title{font-size:clamp(22px,2.4vw,32px);font-weight:500}
+  .acc-toggle{width:46px;height:46px;border-radius:12px;background:#0D0D0D;color:var(--green);display:grid;place-items:center;font-size:22px;justify-self:end}
+  .acc-row{border-bottom:1px solid var(--border);display:grid;grid-template-columns:80px 1fr 60px;align-items:center;padding:30px 10px;cursor:pointer;transition:background .25s ease}
+  .acc-row:hover{background:#fafafa}
+  .acc-toggle{transition:background .3s ease, color .3s ease, transform .4s ease}
+  .acc-content{grid-column:1 / -1;color:#555;max-height:0;overflow:hidden;opacity:0;padding:0 10px;transition:max-height .45s ease, opacity .3s ease, padding .3s ease}
+  .acc-row.open .acc-content{max-height:300px;opacity:1;padding:0 10px 30px}
+  .acc-row.open .acc-toggle{background:var(--green);color:#0a0a0a;transform:rotate(180deg)}
+  .view-all-row{margin-top:30px;display:grid;place-items:center;border:1px solid var(--border);border-radius:14px;padding:18px}
+
+  /* PROCESS */
+  .process{background:#fff}
+  .process-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+  .process-img img{width:100%;height:640px;object-fit:cover;border-radius:18px}
+  .steps{margin-top:30px;display:flex;flex-direction:column;gap:22px}
+  .step{display:grid;grid-template-columns:120px 1fr;gap:20px;padding-bottom:22px;border-bottom:1px solid var(--border)}
+  .step-pill{background:#0D0D0D;color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;text-align:center;align-self:start}
+  .step h4{font-size:18px;margin-bottom:6px}
+  .step p{color:#555;font-size:14px}
+
+  /* WORKS */
+  .works-head{text-align:center;margin-bottom:60px}
+  .works-head .tag{margin:0 auto}
+  .works{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:24px;align-items:end}
+  .work-card{position:relative;border-radius:18px;overflow:hidden;background:#111}
+  .work-card img{width:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .work-card:hover img{transform:scale(1.06)}
+  .work-card.left img{height:440px}
+  .work-card.center img{height:560px}
+  .work-card.right img{height:440px}
+  .work-bar{position:absolute;left:14px;right:14px;bottom:14px;background:#0D0D0D;color:#fff;border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+  .work-bar a{color:var(--green);font-weight:600;font-size:14px;display:inline-flex;gap:6px;align-items:center}
+
+  /* WHY */
+  .why{padding:0;background:#fff}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+  .why-left{background:var(--green);padding:90px 60px;display:flex;flex-direction:column;justify-content:center}
+  .why-left h2{font-size:clamp(34px,4vw,52px);color:#0a0a0a}
+  .why-list{margin-top:30px;display:flex;flex-direction:column;gap:18px}
+  .why-item{display:flex;gap:14px;align-items:center;background:rgba(0,0,0,0.06);border-radius:14px;padding:14px 18px}
+  .why-item .ic{width:42px;height:42px;border-radius:10px;background:#0D0D0D;color:var(--green);display:grid;place-items:center;font-weight:700}
+  .why-item span{font-weight:500;color:#0a0a0a}
+  .why-right{background:url('https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?auto=format&fit=crop&w=1200&h=1200&q=80') center/cover}
+
+  /* TESTIMONIALS */
+  .testi{background:#0D0D0D;color:#fff;position:relative;overflow:hidden}
+  .testi::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1920&h=1200&q=80') center/cover;opacity:.18}
+  .testi .container{position:relative}
+  .testi-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:30px;margin-bottom:50px}
+  .testi-head h2{font-size:clamp(36px,5vw,64px);font-style:italic;font-weight:700;max-width:14ch}
+  .rating{display:flex;align-items:center;gap:14px}
+  .avatars{display:flex}
+  .avatars img{width:42px;height:42px;border-radius:999px;border:2px solid #0D0D0D;margin-left:-10px;object-fit:cover}
+  .avatars img:first-child{margin-left:0}
+  .stars{color:#FF8A00;letter-spacing:2px}
+  .reviews{display:flex;gap:22px;overflow-x:auto;padding-bottom:14px;scrollbar-width:thin}
+  .review{flex:0 0 360px;background:#fff;color:#111;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px}
+  .review-top{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+  .review-top .platform{color:#111}
+  .review-top .score{color:#666;font-size:13px}
+  .review p{color:#555;font-size:14px;line-height:1.6}
+  .reviewer{display:flex;align-items:center;gap:12px;margin-top:auto;border-top:1px solid #eee;padding-top:14px}
+  .reviewer img{width:42px;height:42px;border-radius:999px;object-fit:cover}
+  .reviewer b{display:block;font-size:14px}
+  .reviewer span{color:#888;font-size:12px}
+
+  /* BLOG */
+  .blog-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:30px;margin-bottom:50px}
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .blog-card{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#fff;transition:transform .35s ease, box-shadow .35s ease}
+  .blog-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px -20px rgba(0,0,0,.18)}
+  .blog-card img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .blog-card:hover img{transform:scale(1.05)}
+  .blog-img{position:relative}
+  .blog-img img{height:240px;width:100%;object-fit:cover}
+  .read-more{position:absolute;top:14px;right:14px;background:var(--green);color:#0a0a0a;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+  .blog-body{padding:22px}
+  .blog-body .date{color:#888;font-size:13px}
+  .blog-body h3{font-size:20px;margin-top:8px;font-weight:500}
+
+  /* CTA */
+  .cta{padding:0}
+  .cta-inner{padding:120px 24px;background:linear-gradient(180deg,rgba(13,13,13,.6),rgba(13,13,13,.85)),url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1920&h=900&q=80') center/cover;color:#fff;text-align:center}
+  .cta-inner h2{font-size:clamp(36px,5vw,64px);max-width:18ch;margin:0 auto;font-weight:500}
+  .cta-inner p{font-style:italic;font-weight:700;font-size:22px;margin-top:18px}
+  .cta-inner .btn{margin-top:34px;padding:18px 36px;font-size:16px}
+
+  /* FOOTER */
+  footer{background:#0D0D0D;color:#fff;padding:80px 0 24px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px}
+  .foot-tag{color:#aaa;font-size:14px;margin-top:18px;max-width:34ch;line-height:1.6}
+  .foot h5{font-size:14px;color:#888;margin-bottom:18px;text-transform:uppercase;letter-spacing:1px;font-weight:500}
+  .foot ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .foot ul a{color:#ddd;font-size:15px;transition:color .2s}
+  .foot ul a:hover{color:var(--green)}
+  .foot ul a.green{color:var(--green)}
+  .foot-bottom{margin-top:60px;padding-top:24px;border-top:1px solid #2a2a2a;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .foot-bottom p{color:#888;font-size:13px}
+  .foot-bottom .green{color:var(--green)}
+  .buy-now{background:#1a1a1a;color:#fff;padding:10px 18px;border-radius:999px;border:1px solid #2a2a2a;font-size:13px}
+
+  /* RESPONSIVE */
+  @media (max-width: 980px){
+    .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:#0D0D0D;flex-direction:column;padding:24px;border:none;border-top:1px solid #222}
+    .nav-links.open{display:flex}
+    .nav .btn{display:none}
+    .hamburger{display:block}
+    .hero-content,.about-grid,.about-bottom,.services-head,.process-grid,.works,.why-grid,.blog-grid,.foot-grid{grid-template-columns:1fr !important}
+    .about-cols{grid-template-columns:1fr}
+    .why-right{min-height:300px}
+    .work-card.left img,.work-card.center img,.work-card.right img{height:340px}
+    section{padding:60px 0}
+    .testi-head{flex-direction:column;align-items:flex-start}
+  }
+
+  /* Navbar scroll effect */
+  .nav-wrap{transition:background .35s ease, box-shadow .35s ease, padding .3s ease, backdrop-filter .35s ease}
+  .nav-wrap.scrolled{background:rgba(13,13,13,.85);backdrop-filter:saturate(140%) blur(10px);box-shadow:0 6px 24px -12px rgba(0,0,0,.6)}
+  .nav-wrap.scrolled .nav{padding-top:12px;padding-bottom:12px}
+
+  /* Reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.delay-1{transition-delay:.08s}
+  .reveal.delay-2{transition-delay:.16s}
+  .reveal.delay-3{transition-delay:.24s}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* Side image hover zoom */
+  .about-side-img,.hero-card img,.work-card,.blog-card .blog-img{overflow:hidden}
+  .about-side-img img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .about-side-img:hover img{transform:scale(1.05)}
+  .hero-card img{transition:transform .6s ease}
+  .hero-card:hover img{transform:scale(1.06)}
+
+  /* Buttons – richer hover */
+  .btn{transition:transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease}
+  .btn-green:hover{box-shadow:0 12px 30px -10px rgba(57,255,20,.55)}
+  .btn-dark:hover{box-shadow:0 12px 30px -12px rgba(0,0,0,.45)}
+
+  /* Page loader */
+  #loader{position:fixed;inset:0;background:#0D0D0D;z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease, visibility .5s ease}
+  #loader.hide{opacity:0;visibility:hidden}
+  #loader .ldr{width:46px;height:46px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:var(--green);animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Body initial fade */
+  body{opacity:0;transition:opacity .5s ease .1s}
+  body.ready{opacity:1}
+
+/* ===== PREMIUM UPGRADE ===== */
+:root{
+  --green-glow:0 0 0 1px rgba(57,255,20,.25), 0 18px 40px -14px rgba(57,255,20,.45);
+  --shadow-soft:0 30px 60px -30px rgba(0,0,0,.25);
+  --shadow-card:0 20px 50px -25px rgba(0,0,0,.18);
+  --grad-dark:radial-gradient(1200px 600px at 80% -10%, rgba(57,255,20,.10), transparent 60%), radial-gradient(900px 500px at 0% 110%, rgba(57,255,20,.08), transparent 60%), #0D0D0D;
+}
+h1,h2,h3,h4,.section-title{font-family:'Space Grotesk','Inter',system-ui,sans-serif;letter-spacing:-0.025em}
+h2.section-title{font-weight:500}
+.em{font-family:'Space Grotesk',serif;font-style:italic;font-weight:600}
+body{font-feature-settings:"ss01","cv11"}
+.container{padding:0 28px}
+
+/* Buttons polish */
+.btn{padding:15px 26px;letter-spacing:-.005em}
+.btn-green{background:linear-gradient(180deg,#4dff2b,#2fe60a);color:#062b00;box-shadow:0 10px 24px -12px rgba(57,255,20,.55), inset 0 1px 0 rgba(255,255,255,.4)}
+.btn-green:hover{box-shadow:0 18px 40px -12px rgba(57,255,20,.7), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-dark{background:#0D0D0D;border:1px solid #1a1a1a;box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
+.btn-outline{border-width:1.5px}
+.btn-outline:hover{background:#0D0D0D;color:#fff}
+.tag{padding:7px 16px;border:1px solid #e6e6e6;background:#fafafa;backdrop-filter:blur(6px)}
+.tag.dark{border-color:#262626;background:#141414}
+
+/* NAV refinement */
+.nav-wrap{background:rgba(13,13,13,.92);backdrop-filter:saturate(140%) blur(12px)}
+.nav-links a{font-size:14.5px;letter-spacing:-.005em}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--green);transition:right .35s ease}
+.nav-links a:hover::after{right:0}
+.nav-links a.active::after{right:0;background:#fff}
+
+/* HERO premium */
+.hero-inner{background:linear-gradient(180deg,rgba(13,13,13,.45) 0%,rgba(13,13,13,.6) 50%,rgba(13,13,13,.95) 100%),url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&h=1200&q=80') center/cover;min-height:760px;position:relative}
+.hero-inner::after{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 85% 20%,rgba(57,255,20,.10),transparent 60%);pointer-events:none}
+.hero h1{font-weight:500;letter-spacing:-.035em;text-shadow:0 4px 30px rgba(0,0,0,.3)}
+.hero h1 .em{background:linear-gradient(120deg,#7CFF5E,#39FF14);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.hero-card{background:rgba(20,20,20,.7);backdrop-filter:blur(14px) saturate(150%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.hero-card img{box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+.phone .ic{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);backdrop-filter:blur(8px)}
+
+/* ABOUT */
+.about-img,.about-side-img{box-shadow:var(--shadow-soft)}
+.about-card-green{background:linear-gradient(135deg,#39FF14,#7CFF5E);box-shadow:0 30px 60px -30px rgba(57,255,20,.5);position:relative;overflow:hidden}
+.about-card-green::before{content:"✦";position:absolute;top:18px;right:24px;font-size:28px;color:rgba(0,0,0,.25)}
+.about-cols h4{font-family:'Space Grotesk',sans-serif;font-weight:600}
+
+/* SERVICES */
+.acc-row{transition:background .3s ease, padding .3s ease}
+.acc-row:hover{background:linear-gradient(90deg,#fafafa,transparent)}
+.acc-title{font-family:'Space Grotesk',sans-serif}
+.acc-toggle{box-shadow:0 6px 16px -8px rgba(0,0,0,.3)}
+.acc-row.open .acc-toggle{box-shadow:0 10px 24px -8px rgba(57,255,20,.55)}
+.view-all-row{background:linear-gradient(180deg,#fff,#fafafa)}
+
+/* PROCESS */
+.process-img{position:relative}
+.process-img::before{content:"";position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(57,255,20,.35),transparent 50%);border-radius:20px;z-index:-1;filter:blur(20px);opacity:.6}
+.process-img img{box-shadow:var(--shadow-soft)}
+.step-pill{font-family:'Space Grotesk',sans-serif;letter-spacing:.04em;font-weight:500;padding:9px 16px;background:linear-gradient(180deg,#1a1a1a,#0D0D0D);box-shadow:0 6px 16px -10px rgba(0,0,0,.5)}
+.step h4{font-family:'Space Grotesk',sans-serif}
+
+/* WORKS premium */
+.work-card{box-shadow:var(--shadow-card);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease}
+.work-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -25px rgba(0,0,0,.35)}
+.work-bar{background:rgba(13,13,13,.85);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.06);font-family:'Space Grotesk',sans-serif}
+.work-bar a:hover{color:#7CFF5E}
+
+/* WHY refinement */
+.why-left{position:relative;overflow:hidden}
+.why-left::before{content:"☀";position:absolute;top:-80px;right:-60px;font-size:340px;color:rgba(0,0,0,.06);line-height:1}
+.why-left h2{font-family:'Space Grotesk',sans-serif}
+.why-item{background:rgba(255,255,255,.45);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.06);transition:transform .3s ease,background .3s ease}
+.why-item:hover{transform:translateX(6px);background:rgba(255,255,255,.7)}
+.why-item .ic{box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
+.why-right{position:relative}
+.why-right::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(13,13,13,.35))}
+
+/* TESTIMONIALS premium */
+.testi{background:var(--grad-dark)}
+.testi::before{opacity:.12;mix-blend-mode:luminosity}
+.testi-head h2{font-family:'Space Grotesk',sans-serif;background:linear-gradient(180deg,#fff,#cfcfcf);-webkit-background-clip:text;background-clip:text;color:transparent}
+.review{box-shadow:0 30px 60px -30px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.04);transition:transform .4s ease,box-shadow .4s ease}
+.review:hover{transform:translateY(-6px);box-shadow:0 40px 70px -25px rgba(57,255,20,.18)}
+.review-top .platform{font-family:'Space Grotesk',sans-serif;font-weight:600}
+.reviewer b{font-family:'Space Grotesk',sans-serif}
+.reviews{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.review{scroll-snap-align:start}
+.reviews::-webkit-scrollbar{height:6px}
+.reviews::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px}
+
+/* BLOG premium */
+.blog-card{box-shadow:var(--shadow-card)}
+.blog-card:hover{box-shadow:0 30px 60px -25px rgba(0,0,0,.25)}
+.blog-body h3{font-family:'Space Grotesk',sans-serif;line-height:1.3;letter-spacing:-.015em}
+.read-more{box-shadow:0 8px 20px -10px rgba(57,255,20,.6);transition:transform .3s ease}
+.blog-card:hover .read-more{transform:translateY(-2px)}
+
+/* CTA premium */
+.cta-inner{background:linear-gradient(180deg,rgba(13,13,13,.55),rgba(13,13,13,.92)),url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1920&h=900&q=80') center/cover;position:relative}
+.cta-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 350px at 50% 20%,rgba(57,255,20,.18),transparent 60%);pointer-events:none}
+.cta-inner h2{font-family:'Space Grotesk',sans-serif;font-weight:500;letter-spacing:-.03em;position:relative}
+.cta-inner h2 .em,.cta-inner p .em{background:linear-gradient(120deg,#7CFF5E,#39FF14);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* FOOTER premium */
+footer{background:var(--grad-dark);position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(57,255,20,.4),transparent)}
+.foot h5{font-family:'Space Grotesk',sans-serif}
+.foot ul a{position:relative;display:inline-block;transition:transform .25s ease,color .25s ease}
+.foot ul a:hover{transform:translateX(4px)}
+.foot-bottom .green{font-weight:600}
+
+/* RESPONSIVE refinements */
+@media (max-width: 1100px){
+  .hero-content{padding:100px 24px 80px}
+  .hero h1{font-size:clamp(40px,7vw,64px)}
+  .process-img img{height:520px}
+  .about-img img{height:480px}
+}
+@media (max-width: 820px){
+  section{padding:70px 0}
+  .container{padding:0 20px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#0D0D0D;flex-direction:column;padding:24px;border-left:none;border-top:1px solid #2a2a2a;gap:18px}
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  .nav .btn-green{display:none}
+  .hero-content{padding:90px 20px 70px;gap:30px}
+  .hero-card{max-width:100%}
+  .about-grid,.about-bottom,.process-grid,.why-grid{gap:36px}
+  .about-cols{grid-template-columns:1fr;gap:20px}
+  .why-left{padding:60px 28px}
+  .work-card.left,.work-card.right{margin-top:0 !important}
+  .work-card.left img,.work-card.center img,.work-card.right img{height:300px}
+  .review{flex:0 0 88%}
+  .blog-grid{gap:18px}
+  .foot-grid{gap:36px}
+  .foot-bottom{flex-direction:column;text-align:center}
+  .cta-inner{padding:90px 20px}
+}
+@media (max-width: 480px){
+  .hero-inner{min-height:640px}
+  .hero h1{font-size:42px}
+  .btn{padding:13px 22px;font-size:14px}
+  .hero-card{flex-direction:column;text-align:center;padding:18px}
+  .hero-card img{width:100%;height:160px}
+  .step{grid-template-columns:1fr;gap:10px}
+  .acc-row{grid-template-columns:50px 1fr 46px;padding:22px 6px}
+  .acc-toggle{width:40px;height:40px}
+}
+
+</style>
+</head>
+<body>
+<div id="loader"><div class="ldr"></div></div>
+
+<!-- NAVBAR -->
+<header class="nav-wrap">
+  <div class="nav">
+    <a href="#" class="logo">
+      <span class="logo-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+      Solarium
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        
+      </ul>
+    </nav>
+    <a href="#quote" class="btn btn-green">Get Free Quote <span class="arrow">↗</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div>
+        <h1>Transform Your Home with <span class="em">Clean Solar Energy</span></h1>
+        <div class="hero-actions">
+          <a href="#quote" class="btn btn-green">Get Free Quote <span class="arrow">↗</span></a>
+          <div class="phone">
+            <span class="ic">📞</span>
+            <div>
+              <div style="color:#aaa;font-size:12px">Call Us</div>
+              <div style="font-weight:600">+1 (800) 555-0923</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?auto=format&fit=crop&w=240&h=240&q=80" alt="Solar workers"/>
+        <p>Enjoy guaranteed savings and expert solar backed by <b>5,000+</b> satisfied homeowners.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&h=900&q=80" alt="Two people examining a solar panel"/>
+      </div>
+      <div>
+        <span class="tag">About Us</span>
+        <h2 class="section-title">Bright Energy for a <span class="em">Better Tomorrow</span></h2>
+        <div class="divider"></div>
+        <div class="about-cols">
+          <div>
+            <h4>Expert Installation, Zero Stress</h4>
+            <p>Our certified solar professionals handle everything — from custom design to installation, so you enjoy seamless energy.</p>
+          </div>
+          <div>
+            <h4>Sustainable Impact, Locally Driven</h4>
+            <p>We're more than solar installers — we're climate partners. Every project reduces carbon emissions in your community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-bottom">
+      <div>
+        <div class="about-card-green">
+          At Solarium, we bring over 15 years of solar expertise, helping families and businesses switch to clean, affordable, and future-ready energy — with <span class="em">guaranteed savings and zero compromise</span>.
+        </div>
+        <div class="about-bottom-actions">
+          <a href="#" class="btn btn-dark">Learn More About Solarium <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="about-side-img">
+        <img src="https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=900&h=600&q=80" alt="Smiling team with solar panel"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-head">
+      <span class="tag">Our Services</span>
+      <h2 class="section-title">Smart Energy Solutions for <span class="em">Homes &amp; Businesses</span></h2>
+    </div>
+    <div class="acc" id="accordion">
+      <div class="acc-row open">
+        <div class="acc-num">01</div>
+        <div class="acc-title">Residential Solar Installation</div>
+        <div class="acc-toggle">+</div>
+        <div class="acc-content">Custom-designed rooftop solar systems with industry-leading panels and seamless installation for your home.</div>
+      </div>
+      <div class="acc-row">
+        <div class="acc-num">02</div>
+        <div class="acc-title">Commercial Solar Systems</div>
+        <div class="acc-toggle">+</div>
+        <div class="acc-content">Reduce overhead and gain energy independence with scalable solar systems for offices, warehouses, and retail.</div>
+      </div>
+      <div class="acc-row">
+        <div class="acc-num">03</div>
+        <div class="acc-title">Battery Storage Solutions</div>
+        <div class="acc-toggle">+</div>
+        <div class="acc-content">Power through outages and store excess energy for night-time use with high-capacity battery systems.</div>
+      </div>
+      <div class="acc-row">
+        <div class="acc-num">04</div>
+        <div class="acc-title">Solar Panel Maintenance</div>
+        <div class="acc-toggle">+</div>
+        <div class="acc-content">Keep your system performing at peak efficiency with scheduled inspections, cleaning, and repairs.</div>
+      </div>
+      <div class="acc-row">
+        <div class="acc-num">05</div>
+        <div class="acc-title">Financing Options</div>
+        <div class="acc-toggle">+</div>
+        <div class="acc-content">Flexible plans, leases, and PPAs designed to fit any budget — start saving from day one.</div>
+      </div>
+    </div>
+    <div class="view-all-row">
+      <a href="#" class="btn btn-outline">View All Services <span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div class="process-grid">
+      <div class="process-img">
+        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=900&h=1200&q=80" alt="Team consultation with solar plans"/>
+      </div>
+      <div>
+        <span class="tag">Work Process</span>
+        <h2 class="section-title">Your Home with <span class="em">Clean Solar Energy</span></h2>
+        <div class="steps">
+          <div class="step"><div class="step-pill">Step 01</div><div><h4>Free Consultation</h4><p>Our solar advisors review your energy usage, home layout, and goals. We'll discuss savings potential.</p></div></div>
+          <div class="step"><div class="step-pill">Step 02</div><div><h4>Custom System Design</h4><p>We use satellite imagery, 3D modeling, and shade analysis to engineer a solar system tailored for maximum efficiency.</p></div></div>
+          <div class="step"><div class="step-pill">Step 03</div><div><h4>Paperwork Handled</h4><p>Our team takes care of all local permitting, HOA approvals, utility applications, and incentive paperwork.</p></div></div>
+          <div class="step"><div class="step-pill">Step 04</div><div><h4>Professional Installation</h4><p>Certified technicians install your system with precision and care. Most installations are completed in 1–2 days.</p></div></div>
+          <div class="step"><div class="step-pill">Step 05</div><div><h4>System Activation</h4><p>You'll receive access to our smart monitoring app to track your system's real-time performance and savings.</p></div></div>
+          <div class="step" style="border:none"><div class="step-pill">Step 06</div><div><h4>Ongoing Support</h4><p>Enjoy long-term peace of mind with our warranty-backed maintenance and performance guarantees.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section>
+  <div class="container">
+    <div class="works-head">
+      <span class="tag">Works</span>
+      <h2 class="section-title">Our Most Successful <span class="em">Solar Services</span></h2>
+    </div>
+    <div class="works">
+      <div class="work-card left" style="margin-top:40px">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=700&h=700&q=80" alt="Foster Family"/>
+        <div class="work-bar"><b>Foster Family</b><a href="#">View Details ↗</a></div>
+      </div>
+      <div class="work-card center">
+        <img src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=800&h=900&q=80" alt="Johnson Family"/>
+        <div class="work-bar"><b>Johnson Family</b><a href="#">View Details ↗</a></div>
+      </div>
+      <div class="work-card right" style="margin-top:60px">
+        <img src="https://images.pexels.com/photos/14613939/pexels-photo-14613939.jpeg" alt="Ramirez Family"/>
+        <div class="work-bar"><b>Ramirez Family</b><a href="#">View Details ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="why-grid">
+    <div class="why-left">
+      <span class="tag">Why Choose Us?</span>
+      <h2 style="margin-top:18px">Trusted Solar Experts <span class="em">Dedicated to Performance</span></h2>
+      <div class="why-list">
+        <div class="why-item"><span class="ic">✓</span><span>Certified &amp; Experienced Installers</span></div>
+        <div class="why-item"><span class="ic">$</span><span>Proven Cost Savings &amp; ROI</span></div>
+        <div class="why-item"><span class="ic">★</span><span>Comprehensive Warranties</span></div>
+        <div class="why-item"><span class="ic">⚡</span><span>Flexible Financing for Every Budget</span></div>
+        <div class="why-item"><span class="ic">◎</span><span>Smart Monitoring &amp; Support</span></div>
+      </div>
+    </div>
+    <div class="why-right" role="img" aria-label="Solar technician"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="container">
+    <div class="testi-head">
+      <div>
+        <span class="tag dark">Testimonials</span>
+        <h2 style="margin-top:18px">What Our Customers Say</h2>
+      </div>
+      <div class="rating">
+        <div class="avatars">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80"/>
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&h=160&q=80"/>
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&h=160&q=80"/>
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80"/>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80"/>
+        </div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <div style="font-size:13px;color:#ddd">4.9/5 (26M+ Reviews)</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <div class="review-top"><span class="platform">Marke</span><span class="score">★ 4.9/5</span></div>
+        <p>I was skeptical about solar savings, but now I'm saving over $200/month! Solarium's installation was smooth and they handled all the paperwork.</p>
+        <div class="reviewer"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&h=160&q=80"/><div><b>Michael Chen</b><span>San Diego, CA</span></div></div>
+      </div>
+      <div class="review">
+        <div class="review-top"><span class="platform">Techlify</span><span class="score">★ 4.9/5</span></div>
+        <p>Solarium helped us stay powered even during a grid outage. Their team was fast, professional, and friendly. We love tracking everything from our app!</p>
+        <div class="reviewer"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=160&h=160&q=80"/><div><b>Sophia Ramirez</b><span>Austin, TX</span></div></div>
+      </div>
+      <div class="review">
+        <div class="review-top"><span class="platform">Marke</span><span class="score">★ 4.9/5</span></div>
+        <p>Solarium helped us install a solar system on our warehouse. It's now paying for itself and lowering our operational costs.</p>
+        <div class="reviewer"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=160&h=160&q=80"/><div><b>Carlos Cruz</b><span>El Paso, TX</span></div></div>
+      </div>
+      <div class="review">
+        <div class="review-top"><span class="platform">Man</span><span class="score">★ 4.9/5</span></div>
+        <p>Excellent end-to-end service. The monitoring app gives us total visibility on production and savings.</p>
+        <div class="reviewer"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80"/><div><b>Michael Chen</b><span>San Diego, CA</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section>
+  <div class="container">
+    <div class="blog-head">
+      <div>
+        <span class="tag">Blog</span>
+        <h2 class="section-title">Latest Insights And <span class="em">Resources</span></h2>
+      </div>
+      <a href="#" class="btn btn-green">Browse All Articles <span class="arrow">↗</span></a>
+    </div>
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=700&h=500&q=80" alt="Cost of solar"/>
+          <a class="read-more" href="#">Read More ↗</a>
+        </div>
+        <div class="blog-body">
+          <div class="date">April 28, 2026</div>
+          <h3>How Much Does Solar Installation Cost in Your City</h3>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c29sYXJ8ZW58MHx8MHx8fDA%3D" alt="Benefits of residential solar"/>
+          <a class="read-more" href="#">Read More ↗</a>
+        </div>
+        <div class="blog-body">
+          <div class="date">April 28, 2026</div>
+          <h3>Top 5 Benefits of Residential Solar in 2026</h3>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-img">
+          <img src="https://plus.unsplash.com/premium_photo-1679917152396-4b18accacb9d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c29sYXIlMjBwYW5lbHxlbnwwfHwwfHx8MA%3D%3D" alt="Solar ROI calculator"/>
+          <a class="read-more" href="#">Read More ↗</a>
+        </div>
+        <div class="blog-body">
+          <div class="date">April 28, 2026</div>
+          <h3>Solar ROI Calculator How Much Will You Really Save?</h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="quote">
+  <div class="cta-inner">
+    <h2>Start Saving with Clean, Reliable Solar Energy Today</h2>
+    <p><span class="em">Ready to Power Your Future?</span></p>
+    <a href="#" class="btn btn-green">Get Free Quote <span class="arrow">↗</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#" class="logo">
+          <span class="logo-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+          Solarium
+        </a>
+        <p class="foot-tag">Empowering homes and businesses with sustainable solar energy solutions — designed for efficiency, reliability, and long-term savings.</p>
+      </div>
+      <div class="foot">
+        <h5>Quick View</h5>
+        <ul>
+          <li><a href="#" class="green">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h5>Utility Pages</h5>
+        <ul>
+          <li><a href="#">License</a></li>
+          <li><a href="#">Style Guide</a></li>
+          <li><a href="#">Change-Log</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h5>Social Links</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>Copyright © 2026 Solarium | Powered by <span class="green"><a href="https://axistechgroup.com/"></a> AxisTechGroup</span></p>
+      <a href="#" class="buy-now">Buy Now +</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const ham = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  // Active link
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelectorAll('#navLinks a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.acc-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const isOpen = row.classList.contains('open');
+      document.querySelectorAll('.acc-row').forEach(r => {
+        r.classList.remove('open');
+        r.querySelector('.acc-toggle').textContent = '+';
+      });
+      if (!isOpen) {
+        row.classList.add('open');
+        row.querySelector('.acc-toggle').textContent = '–';
+      }
+    });
+  });
+  // Initialize first
+  const firstOpen = document.querySelector('.acc-row.open .acc-toggle');
+  if (firstOpen) firstOpen.textContent = '–';
+
+  // Scrollspy
+  const sections = ['home','about','services','contact'].map(id => document.getElementById(id)).filter(Boolean);
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 120;
+    let current = 'home';
+    sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Navbar scroll effect
+  const navWrap = document.querySelector('.nav-wrap');
+  const onScroll = () => navWrap.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal-on-scroll: auto-tag common blocks then observe
+  const revealSelectors = [
+    '.hero-content > div', '.hero-card',
+    '.about-img', '.about-grid > div', '.about-bottom > div',
+    '.services-head > *', '.acc-row',
+    '.work-card', '.blog-card',
+    '.why-grid > *', '.process-grid > *', '.foot-grid > *',
+    'section .container > .tag, section .container > .section-title'
+  ];
+  document.querySelectorAll(revealSelectors.join(',')).forEach((el, i) => {
+    el.classList.add('reveal');
+    if (i % 3 === 1) el.classList.add('delay-1');
+    if (i % 3 === 2) el.classList.add('delay-2');
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Page loader + ready fade
+  window.addEventListener('load', () => {
+    document.body.classList.add('ready');
+    setTimeout(() => document.getElementById('loader').classList.add('hide'), 250);
+  });
+</script>
+</body>
+</html>
